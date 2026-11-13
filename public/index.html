@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAWAI · Cosméticos Asiáticos</title>
+<script src="js/tema.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-in">
+    <div class="logo">KA<span>WA</span>I</div>
+    <nav><a href="#produtos">Produtos</a><a href="#quem-somos">Quem somos</a><a href="#contatos">Contatos</a></nav>
+    <div class="hdr-actions">
+      <button type="button" class="cart-btn" id="themeBtn" aria-label="Ativar modo escuro">🌙</button>
+      <button type="button" class="cart-btn" id="cartBtn" aria-label="Abrir carrinho">🛍️<span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO (página inicial) ===== -->
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <h1>Beleza asiática, <br>do jeitinho que você ama</h1>
+      <p>Na KAWAI você encontra K-Beauty e J-Beauty: skincare, proteção solar, máscaras faciais e maquiagem, escolhidos com carinho para uma pele leve, hidratada e radiante.</p>
+      <div class="hero-btns"><a class="lnk dark" href="#produtos">Ver produtos</a><a class="lnk light" href="#contatos">Fale conosco</a></div>
+    </div>
+    <div class="collage" id="collage"></div>
+  </div>
+</section>
+
+<!-- ===== O QUE A LOJA VENDE ===== -->
+<section class="section" id="categorias">
+  <h2 class="reveal">O que você encontra na KAWAI</h2>
+  <p class="lead reveal">Cosméticos asiáticos, principalmente coreanos, para todas as etapas da sua rotina.</p>
+  <div class="cat-grid" id="catGrid"></div>
+</section>
+
+<!-- ===== VITRINE ===== -->
+<main class="section" id="produtos">
+  <h2>Nossos Produtos</h2>
+  <div class="grid" id="grid"></div>
+</main>
+
+<!-- ===== QUEM SOMOS ===== -->
+<section class="about" id="quem-somos">
+  <div class="section">
+    <h2 class="reveal">Quem somos</h2>
+    <div class="about-grid">
+      <div class="about-txt reveal">
+        <p>A <strong>KAWAI</strong> é uma loja de cosméticos asiáticos, com foco em produtos coreanos (K-Beauty) e também japoneses (J-Beauty), criada para quem ama uma rotina de cuidados simples, gostosa e eficiente.</p>
+        <p>Cada item é escolhido pensando em uma pele saudável e radiante, com atenção à composição. Atendemos online, com envio pelos Correios, e também na loja física, na Liberdade, em São Paulo.</p>
+        <p><strong>Principais produtos</strong></p>
+        <div class="chips"><span>Protetores solares</span><span>Toners</span><span>Séruns</span><span>Hidratantes</span><span>Limpadores faciais</span><span>Máscaras faciais</span><span>Iluminadores e maquiagem</span></div>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal"><strong> Curadoria cuidadosa</strong><span>Produtos escolhidos a dedo, com ingredientes transparentes.</span></div>
+        <div class="pillar reveal"><strong> Direto da Ásia</strong><span>O melhor da beleza coreana e japonesa num só lugar.</span></div>
+        <div class="pillar reveal"><strong> Atendimento próximo</strong><span>Tire dúvidas pelo WhatsApp ou na loja física.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTATOS ===== -->
+<section class="section" id="contatos">
+  <h2 class="reveal">Contatos</h2>
+  <div class="contact-grid" id="contatosGrid"></div>
+</section>
+
+<!-- ===== MODAL DE DETALHES ===== -->
+<div class="overlay" id="overlay"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <button class="close" id="modalClose" aria-label="Fechar">✕</button>
+  <div class="modal-body">
+    <div>
+      <div class="main-img"><img id="mImg" alt=""></div>
+      <div class="thumbs" id="mThumbs"></div>
+    </div>
+    <div>
+      <h3 id="mNome"></h3>
+      <span class="preco" id="mPreco"></span>
+      <p id="mDesc" style="color:var(--cinza);font-size:.92rem"></p>
+      <div class="ing"><strong>Composição (ingredientes)</strong><span id="mIng"></span></div>
+      <button class="btn" id="mAdd">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARRINHO LATERAL ===== -->
+<aside class="drawer" id="drawer" aria-label="Carrinho">
+  <div class="drawer-head"><h3>Seu Carrinho</h3><button class="close" id="drawerClose" aria-label="Fechar">✕</button></div>
+  <div class="drawer-body">
+    <div id="items"></div>
+
+    <div class="box">
+      <h4> Calcular frete (Correios)</h4>
+      <div class="row">
+        <input id="cep" placeholder="00000-000" maxlength="9" inputmode="numeric">
+        <button class="btn sec" id="cepBtn">Calcular</button>
+      </div>
+      <div id="fretes"></div>
+    </div>
+
+    <div class="box dados">
+      <h4> Seus dados</h4>
+      <input id="cliNome" placeholder="Nome completo" autocomplete="name">
+      <input id="cliEmail" type="email" placeholder="E-mail" autocomplete="email">
+    </div>
+
+    <div class="box">
+      <h4> Forma de pagamento</h4>
+      <div class="tabs" id="tabs">
+        <button data-p="pix" class="on">PIX</button>
+        <button data-p="cartao">Cartão</button>
+        <button data-p="boleto">Boleto</button>
+      </div>
+      <div class="pay" id="pay"></div>
+    </div>
+  </div>
+  <div class="drawer-foot">
+    <div class="tot"><span>Subtotal</span><span id="tSub">R$ 0,00</span></div>
+    <div class="tot"><span>Frete</span><span id="tFrete">—</span></div>
+    <div class="tot big"><span>Total</span><span id="tTotal">R$ 0,00</span></div>
+    <button class="btn" id="finish">Finalizar Compra</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<!-- ===== RODAPÉ ===== -->
+<footer>
+  <div class="logo">KA<span>WA</span>I</div>
+  <address id="ftEnd"> Rua Barão de Iguape, 174 — Liberdade, São Paulo/SP</address>
+  <div class="social">
+    <a id="ftIg" href="https://www.instagram.com/_ka_wa_iiiiiiii?dlrf=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">Instagram</a>
+    <a id="ftTt" href="https://www.tiktok.com/@_ka_wa_iiiiiiii0?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">TikTok</a>
+    <a id="ftWa" href="https://wa.me/5511938004977" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <p class="copy">© 2026 KAWAI Cosméticos Asiáticos. Todos os direitos reservados.</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
